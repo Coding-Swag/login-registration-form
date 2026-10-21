@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lumora — Sign In</title>
+  <meta name="description" content="Sign in to Lumora — your modern workspace platform. Secure login with real-time validation and API integration." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- ===== LOGIN PAGE ===== -->
+  <div id="loginPage" class="page active">
+    <div class="auth-wrapper">
+
+      <!-- Left Branding Panel -->
+      <div class="brand-panel">
+        <div class="brand-top">
+          <div class="logo">
+            <span class="logo-icon">L</span>
+            <span class="logo-text">Lumora</span>
+          </div>
+        </div>
+        <div class="brand-hero">
+          <p class="brand-tag">YOUR WORKSPACE, REIMAGINED</p>
+          <h1 class="brand-headline">Welcome back<br />to your world.</h1>
+          <p class="brand-sub">Sign in to continue your journey. Everything you left is waiting — organised, synced, and ready.</p>
+        </div>
+        <div class="brand-stats">
+          <div class="stat"><strong>50K+</strong><span>Active Users</span></div>
+          <div class="stat-divider"></div>
+          <div class="stat"><strong>99.9%</strong><span>Uptime SLA</span></div>
+          <div class="stat-divider"></div>
+          <div class="stat"><strong>256-bit</strong><span>Encryption</span></div>
+        </div>
+        <div class="brand-bottom">
+          <span class="status-dot"></span>
+          Simple. Secure. Seamless.
+        </div>
+        <div class="deco-circle deco-1"></div>
+        <div class="deco-circle deco-2"></div>
+      </div>
+
+      <!-- Right Form Panel -->
+      <div class="form-panel">
+        <div class="mobile-logo">
+          <span class="logo-icon-sm">L</span>
+          <span>Lumora</span>
+        </div>
+
+        <div class="form-header">
+          <h2 class="form-title">Sign in</h2>
+          <p class="form-subtitle">Enter your credentials to access your account.</p>
+        </div>
+
+        <div id="loginMessage" class="message-banner hidden" role="status" aria-live="polite"></div>
+
+        <form id="loginForm" novalidate>
+
+          <!-- Username or Email -->
+          <div class="field-group" id="usernameGroup">
+            <label for="username" class="field-label">Username or Email</label>
+            <div class="input-wrap">
+              <span class="input-icon">
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </span>
+              <input type="text" id="username" name="username" placeholder="e.g. emilys or your email/username" autocomplete="username" class="form-input" aria-describedby="usernameError" />
+            </div>
+            <p id="usernameError" class="field-error" role="alert" aria-live="assertive"></p>
+          </div>
+
+          <!-- Password -->
+          <div class="field-group" id="passwordGroup">
+            <div class="label-row">
+              <label for="password" class="field-label">Password</label>
+              <button type="button" id="forgotPassword" class="link-btn">Forgot password?</button>
+            </div>
+            <div class="input-wrap">
+              <span class="input-icon">
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              </span>
+              <input type="password" id="password" name="password" placeholder="Your password" autocomplete="current-password" class="form-input has-toggle" aria-describedby="passwordError" />
+              <button type="button" id="togglePassword" class="eye-btn" aria-label="Toggle password visibility">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+            <p id="passwordError" class="field-error" role="alert" aria-live="assertive"></p>
+          </div>
+
+          <!-- Remember Me -->
+          <div class="checkbox-row">
+            <label class="custom-checkbox">
+              <input type="checkbox" id="remember" name="remember" />
+              <span class="checkmark"></span>
+              <span class="check-label">Remember me for 30 days</span>
+            </label>
+          </div>
+
+          <button type="submit" id="loginButton" class="btn-primary">
+            <span id="loginBtnText">Sign in</span>
+            <span id="loginSpinner" class="btn-spinner hidden"></span>
+          </button>
+
+        </form>
+
+        <p class="switch-auth">
+          Don't have an account?
+          <button type="button" id="goToRegister" class="link-btn bold">Create account</button>
+        </p>
+
+        <p class="api-note">
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          Demo uses <strong>dummyjson.com</strong> API. Try username: <code>emilys</code> / password: <code>emilyspass</code>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== REGISTER PAGE ===== -->
+  <div id="registerPage" class="page">
+    <div class="auth-wrapper">
+
+      <!-- Left Branding Panel -->
+      <div class="brand-panel reg-brand">
+        <div class="brand-top">
+          <div class="logo">
+            <span class="logo-icon">L</span>
+            <span class="logo-text">Lumora</span>
+          </div>
+        </div>
+        <div class="brand-hero">
+          <p class="brand-tag">JOIN THE COMMUNITY</p>
+          <h1 class="brand-headline">Start your<br />journey today.</h1>
+          <p class="brand-sub">Create your free Lumora account. Get access to your personal workspace, real-time collaboration, and more.</p>
+        </div>
+        <ul class="feature-list">
+          <li><span class="feature-icon">✓</span><span>Unlimited personal workspace</span></li>
+          <li><span class="feature-icon">✓</span><span>Real-time collaboration tools</span></li>
+          <li><span class="feature-icon">✓</span><span>256-bit end-to-end encryption</span></li>
+          <li><span class="feature-icon">✓</span><span>Free forever — no credit card needed</span></li>
+        </ul>
+        <div class="brand-bottom">
+          <span class="status-dot"></span>
+          Join 50,000+ users worldwide
+        </div>
+        <div class="deco-circle deco-1"></div>
+        <div class="deco-circle deco-2"></div>
+      </div>
+
+      <!-- Right Registration Form -->
+      <div class="form-panel reg-form-panel">
+        <div class="mobile-logo">
+          <span class="logo-icon-sm">L</span>
+          <span>Lumora</span>
+        </div>
+
+        <div class="form-header">
+          <h2 class="form-title">Create account</h2>
+          <p class="form-subtitle">Fill in your details to get started for free.</p>
+        </div>
+
+        <div id="registerMessage" class="message-banner hidden" role="status" aria-live="polite"></div>
+
+        <form id="registerForm" novalidate>
+
+          <!-- Name Row -->
+          <div class="field-row-2">
+            <div class="field-group" id="firstNameGroup">
+              <label for="firstName" class="field-label">First Name</label>
+              <div class="input-wrap">
+                <span class="input-icon"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+                <input type="text" id="firstName" name="firstName" placeholder="First name" autocomplete="given-name" class="form-input" aria-describedby="firstNameError" />
+              </div>
+              <p id="firstNameError" class="field-error" role="alert"></p>
+            </div>
+            <div class="field-group" id="lastNameGroup">
+              <label for="lastName" class="field-label">Last Name</label>
+              <div class="input-wrap">
+                <span class="input-icon"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+                <input type="text" id="lastName" name="lastName" placeholder="Last name" autocomplete="family-name" class="form-input" aria-describedby="lastNameError" />
+              </div>
+              <p id="lastNameError" class="field-error" role="alert"></p>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="field-group" id="regEmailGroup">
+            <label for="regEmail" class="field-label">Email Address</label>
+            <div class="input-wrap">
+              <span class="input-icon"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
+              <input type="email" id="regEmail" name="email" placeholder="you@example.com" autocomplete="email" class="form-input" aria-describedby="regEmailError" />
+            </div>
+            <p id="regEmailError" class="field-error" role="alert"></p>
+          </div>
+
+          <!-- Username -->
+          <div class="field-group" id="regUsernameGroup">
+            <label for="regUsername" class="field-label">Username</label>
+            <div class="input-wrap">
+              <span class="input-icon"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+              <input type="text" id="regUsername" name="username" placeholder="Choose a username" autocomplete="username" class="form-input" aria-describedby="regUsernameError" />
+            </div>
+            <p id="regUsernameError" class="field-error" role="alert"></p>
+          </div>
+
+          <!-- Phone -->
+          <div class="field-group" id="phoneGroup">
+            <label for="phone" class="field-label">Phone Number</label>
+            <div class="input-wrap">
+              <span class="input-icon"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.16 6.16l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+              <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000" autocomplete="tel" class="form-input" aria-describedby="phoneError" />
+            </div>
+            <p id="phoneError" class="field-error" role="alert"></p>
+          </div>
+
+          <!-- Date of Birth -->
+          <div class="field-group" id="dobGroup">
+            <label for="dob" class="field-label">Date of Birth</label>
+            <div class="input-wrap">
+              <span class="input-icon"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
+              <input type="date" id="dob" name="dob" class="form-input" aria-describedby="dobError" />
+            </div>
+            <p id="dobError" class="field-error" role="alert"></p>
+          </div>
+
+          <!-- Gender -->
+          <div class="field-group" id="genderGroup">
+            <label class="field-label">Gender</label>
+            <div class="gender-options" role="radiogroup" aria-label="Gender selection">
+              <label class="gender-card" id="genderMaleCard">
+                <input type="radio" name="gender" value="male" id="genderMale" />
+                <span class="gender-icon">♂</span>
+                <span class="gender-label">Male</span>
+              </label>
+              <label class="gender-card" id="genderFemaleCard">
+                <input type="radio" name="gender" value="female" id="genderFemale" />
+                <span class="gender-icon">♀</span>
+                <span class="gender-label">Female</span>
+              </label>
+              <label class="gender-card" id="genderOtherCard">
+                <input type="radio" name="gender" value="other" id="genderOther" />
+                <span class="gender-icon">⚧</span>
+                <span class="gender-label">Other</span>
+              </label>
+            </div>
+            <p id="genderError" class="field-error" role="alert"></p>
+          </div>
+
+          <!-- Password -->
+          <div class="field-group" id="regPasswordGroup">
+            <label for="regPassword" class="field-label">Password</label>
+            <div class="input-wrap">
+              <span class="input-icon"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
+              <input type="password" id="regPassword" name="password" placeholder="Create a strong password" autocomplete="new-password" class="form-input has-toggle" aria-describedby="regPasswordError" />
+              <button type="button" id="toggleRegPassword" class="eye-btn" aria-label="Toggle password visibility">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+
+            <!-- Strength Meter -->
+            <div class="strength-bar" id="strengthBar" aria-label="Password strength">
+              <div class="strength-segment" id="seg1"></div>
+              <div class="strength-segment" id="seg2"></div>
+              <div class="strength-segment" id="seg3"></div>
+              <div class="strength-segment" id="seg4"></div>
+            </div>
+            <p id="strengthLabel" class="strength-label"></p>
+
+            <!-- Checklist -->
+            <ul class="pwd-checklist" id="pwdChecklist">
+              <li id="chkLength" class="chk-item"><span class="chk-icon"></span> At least 8 characters</li>
+              <li id="chkUpper" class="chk-item"><span class="chk-icon"></span> One uppercase letter</li>
+              <li id="chkNumber" class="chk-item"><span class="chk-icon"></span> One number</li>
+              <li id="chkSpecial" class="chk-item"><span class="chk-icon"></span> One special character</li>
+            </ul>
+
+            <p id="regPasswordError" class="field-error" role="alert"></p>
+          </div>
+
+          <!-- Confirm Password -->
+          <div class="field-group" id="confirmPasswordGroup">
+            <label for="confirmPassword" class="field-label">Confirm Password</label>
+            <div class="input-wrap">
+              <span class="input-icon"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
+              <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter your password" autocomplete="new-password" class="form-input has-toggle" aria-describedby="confirmPasswordError" />
+              <button type="button" id="toggleConfirmPassword" class="eye-btn" aria-label="Toggle confirm password visibility">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+            <p id="confirmPasswordError" class="field-error" role="alert"></p>
+          </div>
+
+          <!-- Terms -->
+          <div class="field-group" id="termsGroup">
+            <label class="custom-checkbox">
+              <input type="checkbox" id="terms" name="terms" />
+              <span class="checkmark"></span>
+              <span class="check-label">I agree to the <button type="button" class="link-btn bold">Terms of Service</button> and <button type="button" class="link-btn bold">Privacy Policy</button></span>
+            </label>
+            <p id="termsError" class="field-error" role="alert"></p>
+          </div>
+
+          <button type="submit" id="registerButton" class="btn-primary">
+            <span id="registerBtnText">Create Account</span>
+            <span id="registerSpinner" class="btn-spinner hidden"></span>
+          </button>
+
+        </form>
+
+        <p class="switch-auth">
+          Already have an account?
+          <button type="button" id="goToLogin" class="link-btn bold">Sign in</button>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script src="./script.js"></script>
+
+</body>
+</html>
